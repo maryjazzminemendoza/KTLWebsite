@@ -1,4 +1,4 @@
-import { ChefHat, Fish, Store, Umbrella } from "lucide-react";
+import { ChefHat, Fish, Store, Waves } from "lucide-react";
 
 const reasons = [
   {
@@ -14,7 +14,7 @@ const reasons = [
       "From a humble coffee shop in 1967 to a beloved family restaurant in Tanay.",
   },
   {
-    icon: Umbrella,
+    icon: Waves,
     title: "Lakeside Dining",
     description:
       "A relaxing place to enjoy good food, fresh air, and great company beside Laguna Lake.",
