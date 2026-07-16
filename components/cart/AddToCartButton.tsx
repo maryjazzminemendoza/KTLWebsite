@@ -106,16 +106,6 @@ export default function AddToCartButton({ item }: AddToCartButtonProps) {
                 : "Add to Cart"}
       </button>
 
-      {showSuccess && (
-        <div
-          role="status"
-          aria-live="polite"
-          className="fixed bottom-6 left-1/2 z-[100] flex -translate-x-1/2 items-center gap-3 rounded-xl bg-[#2F4530] px-5 py-4 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(0,0,0,0.3)]"
-        >
-          <CheckCircle2 className="shrink-0 text-[#D7A24A]" size={20} />
-          {item.name}{selected ? ` (${selected.label})` : ""} was added to your cart.
-        </div>
-      )}
     </>
   );
 }

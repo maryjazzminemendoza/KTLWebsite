@@ -6,8 +6,10 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
+import { CheckCircle2, X } from "lucide-react";
 
 export type CartItem = {
   id: number;
@@ -35,10 +37,19 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const CART_STORAGE_KEY = "kainan-cart";
+const CART_NOTIFICATION_DURATION = 3000;
+
+type CartNotification = {
+  id: number;
+  message: string;
+};
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [notification, setNotification] = useState<CartNotification | null>(null);
+  const notificationIdRef = useRef(0);
+  const notificationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const storedCart = localStorage.getItem(CART_STORAGE_KEY);
@@ -67,6 +78,30 @@ export function CartProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
   }, [items, hasLoaded]);
 
+  useEffect(() => {
+    return () => {
+      if (notificationTimeoutRef.current) {
+        clearTimeout(notificationTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  function showAddedNotification(item: AddToCartItem) {
+    notificationIdRef.current += 1;
+    setNotification({
+      id: notificationIdRef.current,
+      message: `${item.name}${item.variation ? ` (${item.variation})` : ""} was added to your cart.`,
+    });
+
+    if (notificationTimeoutRef.current) {
+      clearTimeout(notificationTimeoutRef.current);
+    }
+    notificationTimeoutRef.current = setTimeout(
+      () => setNotification(null),
+      CART_NOTIFICATION_DURATION,
+    );
+  }
+
   function addItem(item: AddToCartItem) {
     setItems((currentItems) => {
       const existingItem = currentItems.find(
@@ -83,6 +118,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
       return [...currentItems, { ...item, quantity: 1 }];
     });
+    showAddedNotification(item);
   }
 
   function removeItem(lineKey: string) {
@@ -132,6 +168,25 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
+      {notification && (
+        <div
+          key={notification.id}
+          role="status"
+          aria-live="polite"
+          className="fixed left-1/2 top-24 z-[110] flex w-[calc(100%-2rem)] max-w-md -translate-x-1/2 items-start gap-3 rounded-2xl border border-white/10 bg-[#203623] px-4 py-3.5 text-sm font-semibold leading-6 text-white shadow-[0_18px_50px_rgba(0,0,0,0.3)] sm:px-5"
+        >
+          <CheckCircle2 className="mt-0.5 shrink-0 text-[#E4B763]" size={20} />
+          <span className="min-w-0 flex-1 break-words">{notification.message}</span>
+          <button
+            type="button"
+            aria-label="Dismiss cart notification"
+            onClick={() => setNotification(null)}
+            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/70 transition hover:bg-white/10 hover:text-white"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
     </CartContext.Provider>
   );
 }
