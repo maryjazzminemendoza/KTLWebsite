@@ -17,14 +17,14 @@ export default async function ReservationsPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#F7F4EF] px-6 py-24 sm:py-28">
-        <section className="mx-auto grid w-full max-w-6xl items-start gap-10 lg:grid-cols-[1fr_520px]">
-          <div>
+      <main className="min-h-screen bg-[#F7F4EF] px-4 py-24 sm:px-6 sm:py-28">
+        <section className="mx-auto grid w-full min-w-0 max-w-6xl items-start gap-10 lg:grid-cols-[1fr_520px]">
+          <div className="min-w-0">
             <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#C28B38]">
               Reserve a Table
             </p>
 
-            <h1 className="mt-4 text-6xl font-semibold leading-[1.02] text-[#3B2716]">
+            <h1 className="mt-4 text-4xl font-semibold leading-[1.02] text-[#3B2716] sm:text-6xl">
               Plan your visit by the lake.
             </h1>
 

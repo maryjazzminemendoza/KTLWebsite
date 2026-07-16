@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Heart, Leaf, Users } from "lucide-react";
+import { ArrowRight, Heart, Users, Waves } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -18,7 +18,7 @@ const values = [
       "Our tables are a place for families and friends to slow down, reconnect, and celebrate.",
   },
   {
-    icon: Leaf,
+    icon: Waves,
     title: "Rooted by the lake",
     description:
       "The view, local character, and relaxed rhythm of Tanay remain at the heart of every visit.",

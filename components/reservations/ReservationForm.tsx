@@ -106,21 +106,21 @@ export default function ReservationForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="overflow-hidden rounded-[28px] border border-[#DED1BD] bg-white shadow-[0_24px_70px_rgba(59,39,22,0.10)]"
+      className="w-full min-w-0 max-w-full overflow-hidden rounded-[28px] border border-[#DED1BD] bg-white shadow-[0_24px_70px_rgba(59,39,22,0.10)] [&_input]:min-w-0 [&_input]:max-w-full [&_label]:min-w-0 [&_textarea]:min-w-0 [&_textarea]:max-w-full"
     >
       <div className="flex items-center gap-4 border-b border-[#EAE1D4] bg-[#F5EFE5] px-5 py-5 sm:px-7">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#2F4530] text-white">
           <CalendarDays size={21} />
         </div>
-        <div>
+        <div className="min-w-0">
           <h2 className="text-2xl font-semibold text-[#3B2716]">Book your table</h2>
           <p className="mt-0.5 text-xs leading-5 text-[#6F675E]">We&apos;ll confirm your request after you submit.</p>
         </div>
       </div>
 
-      <div className="space-y-4 px-5 py-6 sm:px-7">
+      <div className="min-w-0 space-y-4 px-4 py-6 sm:px-7">
         <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8B6A3D]">Your details</p>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid min-w-0 gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="text-sm font-semibold text-[#3B2716]">
             Full Name
@@ -163,7 +163,7 @@ export default function ReservationForm({
         </label>
 
         <p className="pt-2 text-xs font-bold uppercase tracking-[0.16em] text-[#8B6A3D]">Visit details</p>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid min-w-0 gap-4 sm:grid-cols-2">
           <label className="block">
             <span className="text-sm font-semibold text-[#3B2716]">
               Date
