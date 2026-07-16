@@ -11,8 +11,8 @@ export default function AdminShell({
 }) {
   return (
     <div className="min-h-screen bg-[#F7F4EF]">
-      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-[#E4D6C0] bg-[#142418] px-5 py-6 text-white lg:block">
-        <Link href="/admin" className="flex items-center gap-3">
+      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 flex-col border-r border-[#E4D6C0] bg-[#142418] px-5 py-6 text-white lg:flex">
+        <Link href="/admin" className="flex shrink-0 items-center gap-3">
           <Image
             src="/images/logo.webp"
             alt="Kainan sa Tabing Lawa Logo"
@@ -33,7 +33,7 @@ export default function AdminShell({
 
         <AdminSidebarNav />
 
-        <div className="absolute bottom-6 left-5 right-5 space-y-2">
+        <div className="mt-4 shrink-0 space-y-2 border-t border-white/10 pt-4">
           <Link
             href="/"
             className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold text-white/70 transition hover:bg-white/10 hover:text-white"
