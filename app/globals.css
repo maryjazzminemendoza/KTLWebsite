@@ -1,26 +1,171 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F7F4EF;
+  --foreground: #4E4A45;
+
+  --green: #566B43;
+  --green-dark: #2F4530;
+
+  --gold: #C28B38;
+
+  --cream: #F7F4EF;
+  --beige: #EFE8DD;
+
+  --brown: #3B2716;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img, video, svg {
+  max-width: 100%;
+}
+
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-cormorant);
+}
+
+.container-custom{
+    max-width:1280px;
+    margin:auto;
+    padding-inline:24px;
+}
+
+.section{
+    padding:100px 0;
+}
+
+.gold-button{
+    background:var(--gold);
+    color:white;
+    transition:.3s;
+}
+
+.gold-button:hover{
+    filter:brightness(.95);
+}
+
+.green-button{
+    background:var(--green-dark);
+    color:white;
+}
+
+.section-title{
+    font-size:48px;
+    line-height:1.1;
+    font-weight:600;
+}
+
+.section-subtitle{
+    color:#777;
+    margin-top:18px;
+}
+
+@media (max-width: 767px) {
+  .container-custom {
+    padding-inline: 20px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .section-title {
+    font-size: clamp(2.25rem, 11vw, 3rem);
+  }
+
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+.thermal-receipt {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .pos-register button,
+  .pos-register input,
+  .pos-register textarea {
+    min-height: 44px;
+  }
+
+  .pos-register button {
+    touch-action: manipulation;
+  }
+}
+
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 3mm;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  html, body {
+    width: 80mm;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    color: black !important;
+  }
+
+  #thermal-receipt,
+  #thermal-receipt * {
+    visibility: visible !important;
+  }
+
+  #thermal-receipt {
+    display: block !important;
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 74mm;
+    padding: 1mm 0 4mm;
+    color: #000 !important;
+    background: #fff !important;
+    font-family: "Courier New", Courier, monospace !important;
+    font-size: 10.5px;
+    line-height: 1.35;
+  }
+
+  #thermal-receipt p { margin: 0; }
+  #thermal-receipt .receipt-center { text-align: center; }
+  #thermal-receipt .receipt-brand { font-size: 14px; font-weight: 800; letter-spacing: .4px; }
+  #thermal-receipt .receipt-rule { margin: 2mm 0; border-top: 1px dashed #000; }
+  #thermal-receipt .receipt-meta p,
+  #thermal-receipt .receipt-totals p,
+  #thermal-receipt .receipt-item-price { display: flex; justify-content: space-between; gap: 3mm; }
+  #thermal-receipt .receipt-meta b { max-width: 48mm; text-align: right; overflow-wrap: anywhere; }
+  #thermal-receipt .receipt-item { margin-bottom: 1.5mm; break-inside: avoid; }
+  #thermal-receipt .receipt-item-price { padding-left: 5mm; }
+  #thermal-receipt .receipt-grand-total { margin: 1.5mm 0; padding: 1.5mm 0; border-top: 1px solid #000; border-bottom: 1px solid #000; font-size: 13px; font-weight: 800; }
+  #thermal-receipt .receipt-footer { margin-top: 2mm; }
+  #thermal-receipt .receipt-reference { margin-top: 2mm; font-size: 9px; letter-spacing: .5px; }
 }
