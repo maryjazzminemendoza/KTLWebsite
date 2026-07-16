@@ -41,6 +41,29 @@ button, a, input, select, textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+.admin-sidebar-scrollbar {
+  scrollbar-color: rgba(194, 139, 56, 0.55) rgba(255, 255, 255, 0.06);
+  scrollbar-width: thin;
+}
+
+.admin-sidebar-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-sidebar-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+.admin-sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(194, 139, 56, 0.55);
+  border-radius: 999px;
+}
+
+.admin-sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #C28B38;
+}
+
 h1,
 h2,
 h3,

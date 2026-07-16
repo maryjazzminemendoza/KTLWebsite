@@ -72,7 +72,7 @@ export default function AdminSidebarNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex min-w-max gap-2 lg:mt-8 lg:min-h-0 lg:min-w-0 lg:flex-1 lg:flex-col lg:gap-2 lg:overflow-y-auto lg:pr-1">
+    <nav className="admin-sidebar-scrollbar flex min-w-max gap-2 lg:mt-8 lg:min-h-0 lg:min-w-0 lg:flex-1 lg:flex-col lg:gap-2 lg:overflow-y-auto lg:pr-1">
       {adminLinks.map((link) => {
         const Icon = link.icon;
 
