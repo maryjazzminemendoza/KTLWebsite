@@ -36,6 +36,8 @@ export default function Navbar() {
     pathname.startsWith("/my-orders/") ||
     pathname === "/account" ||
     pathname.startsWith("/account/");
+  const usesCompactHeader =
+    isScrolled || needsSolidBackground || isMobileOpen;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,14 +109,14 @@ export default function Navbar() {
   return (
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
-        isScrolled || needsSolidBackground
+        usesCompactHeader
           ? "border-b border-white/10 bg-[#1f1a14]/95 shadow-[0_10px_40px_rgba(0,0,0,0.18)] backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
       <div
         className={`mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 transition-all duration-500 lg:px-12 ${
-          isScrolled || needsSolidBackground ? "h-20" : "h-24"
+          usesCompactHeader ? "h-20" : "h-24"
         }`}
       >
         <Link href="/" className="flex items-center">
